@@ -1,10 +1,30 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
+import PostCard from './PostCard';
 
 const Home = () => {
+  const [posts, setPosts] = useState([]);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    axios.get('https://jsonplaceholder.typicode.com/posts')
+      .then((res) => {
+        setPosts(res.data.slice(0, 10));
+      })
+      .catch((err) => {
+        setError(err.message);
+      })
+  }, [])
+
   return (
     <div className='container mt-2'>
       <h3 className='text-center'>Home</h3>
-      <p>This is the Home Page</p>
+      {
+        error
+        ? <h5>{error}</h5>
+        : posts.map((post) => <PostCard key={post.id} post={post} />)
+      }
     </div>
   );
 }
