@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom';
 
 const PostCard = ({post}) => {
   return (
@@ -6,7 +6,7 @@ const PostCard = ({post}) => {
       <div className="card-body">
         <h5 className="card-title">{post.title}</h5>
         <p className="card-text text-truncate">{post.body}</p>
-        <a href="!#" className="btn btn-primary">Details...</a>
+        <Link to={`/${post.id}`} className="btn btn-primary">Details...</Link>
       </div>
     </div>
   );
