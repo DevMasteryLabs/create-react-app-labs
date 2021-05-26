@@ -5,6 +5,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
 import Post from './components/Post';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
           <Route exact path='/' component={Home} />
           <Route path='/about' component={About} />
           <Route path='/contact' component={Contact} />
-          <Route path='/:postId' component={Post} />
+          <Route exact path='/:postId' component={Post} />
+          <Route component={NotFound} />
         </Switch>
       </div>
     </BrowserRouter>
